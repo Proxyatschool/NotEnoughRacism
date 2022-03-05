@@ -12,12 +12,12 @@ import sleep from "../../sleep/index";
 
 export { RenderLib, config, macros, dungeons, esp, slayer, request, sleep };
 
-register("command", () => config.openGUI()).setName("nergeneral");
-register("command", () => dungeons.openGUI()).setName("nerdungeons");
+register("command", () => config.openGUI()).setName("nergeneral", true);
+register("command", () => dungeons.openGUI()).setName("nerdungeons", true);
 // register("command", () => dungeonsscanner.openGUI()).setName("nermapscanner");
-register("command", () => slayer.openGUI()).setName("nerslayer");
-register("command", () => esp.openGUI()).setName("neresp");
-register("command", () => macros.openGUI()).setName("nermacros");
+register("command", () => slayer.openGUI()).setName("nerslayer", true);
+register("command", () => esp.openGUI()).setName("neresp", true);
+register("command", () => macros.openGUI()).setName("nermacros", true);
 
 (function () {
     const File = Java.type("java.io.File");
@@ -26,9 +26,9 @@ register("command", () => macros.openGUI()).setName("nermacros");
         var _a;
         try {
             const command = require("./commands/" + file.getName()).default;
-            register("command", command.run).setName(command.name);
+            register("command", command.run).setName(command.name, true);
             (_a = command.aliases) === null || _a === void 0 ? void 0 : _a.forEach(alias => {
-                register("command", command.run).setName(alias);
+                register("command", command.run).setName(alias, true);
             });
         } catch (e) {
             print("Error while loading command: " + e.message);

@@ -11,6 +11,7 @@
         "request",
         "Promise",
         "axios",
-        "RichPresence"
+        "RichPresence",
+        "sleep"
     ]
 }
