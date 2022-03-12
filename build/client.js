@@ -16,7 +16,7 @@ import {
     DiscordEventHandlers,
     ghostBlockExclude,
     blockCoords,
-    SPOTIFY_PREFIX
+    SPOTIFY_PREFIX,
 } from "./utils/Constants";
 
 let inHowl = false;
@@ -78,7 +78,7 @@ import { rpc } from "../build/features/misc/RichPresence";
 const ghostBlockBind = new KeyBind("Ghost Blocks", Keyboard.KEY_NONE, ADVANCE_PREFIX);
 const tradeMacro = new KeyBind("Trade Menu", Keyboard.KEY_NONE, CHAT_PREFIX);
 const wardrobeMacro = new KeyBind("Wardrobe Macro", Keyboard.KEY_NONE, CHAT_PREFIX);
-const sellPots = new KeyBind("Sell Speed 6 Pots", Keyboard.KEY_NONE, GUI_PREFIX)
+const sellPots = new KeyBind("Sell Speed 6 Pots", Keyboard.KEY_NONE, GUI_PREFIX);
 const sellDungeonBS = new KeyBind("Sell Dungeons Garbage", Keyboard.KEY_NONE, GUI_PREFIX);
 const storageSlot1 = new KeyBind("Storage Macro 1", Keyboard.KEY_NONE, GUI_PREFIX);
 const storageSlot2 = new KeyBind("Storage Macro 2", Keyboard.KEY_NONE, GUI_PREFIX);
@@ -97,14 +97,14 @@ let eighthSlot = new KeyBind("Wardrobe Slot 8", Keyboard.KEY_NONE, GUI_PREFIX);
 let ninethSlot = new KeyBind("Wardrobe Slot 9", Keyboard.KEY_NONE, GUI_PREFIX);
 
 const boneMacro = new KeyBind("Bonemerang Macro", Keyboard.KEY_NONE, ADVANCE_PREFIX);
-const termToggle = new KeyBind("Terminator Swap", Keyboard.KEY_NONE, ADVANCE_PREFIX)
-const useEndStone = new KeyBind("Use End Stone Sword and Katana", Keyboard.KEY_NONE, ITEM_PREFIX)
+const termToggle = new KeyBind("Terminator Swap", Keyboard.KEY_NONE, ADVANCE_PREFIX);
+const useEndStone = new KeyBind("Use End Stone Sword and Katana", Keyboard.KEY_NONE, ITEM_PREFIX);
 const RogueMacro = new KeyBind("Rogue Sword Macro", Keyboard.KEY_NONE, ITEM_PREFIX);
 const soulWhipSwap = new KeyBind("Soul Whip Swap (Toggle)", Keyboard.KEY_NONE, ADVANCE_PREFIX);
 const leftClickWhip = new KeyBind("Left Click Soulwhip", Keyboard.KEY_NONE, ADVANCE_PREFIX);
 const useAxe = new KeyBind("Axe Swap", Keyboard.KEY_NONE, ADVANCE_PREFIX);
 const autoRogue = new KeyBind("Auto Rogue Sword", Keyboard.KEY_NONE, ADVANCE_PREFIX);
-const autoClicker = new KeyBind("Terminator AC", Keyboard.KEY_NONE, ADVANCE_PREFIX)
+const autoClicker = new KeyBind("Terminator AC", Keyboard.KEY_NONE, ADVANCE_PREFIX);
 const secretauraSwitchSettingsKeybind = new KeyBind("Secret Aura", Keyboard.KEY_NONE, ADVANCE_PREFIX);
 const doubleSwap = new KeyBind("Double Swap Macro", Keyboard.KEY_NONE, ADVANCE_PREFIX);
 const tripleSwap = new KeyBind("Triple Swap Macro", Keyboard.KEY_NONE, ADVANCE_PREFIX);
@@ -117,31 +117,85 @@ let isGrindingGhosts = false;
 let lcWhipToggle = false;
 let axeSwap = false;
 let autoSpeed = false;
-let toggled = false
+let toggled = false;
 let doubleSwapToggle = false;
 let tripleSwapToggle = false;
 
-new ClickMacro("packet", "right", new KeyBind("Teleport Macro", Keyboard.KEY_NONE, ITEM_PREFIX), 25, "isKeyDown", "Aspect of the End", "Aspect of the Void");
-new ClickMacro("packet", "right", new KeyBind("Use Wither Cloak", Keyboard.KEY_NONE, ITEM_PREFIX), 25, "isPressed", "Wither Cloak Sword");
-new ClickMacro("packet", "right", new KeyBind("Use Ice Spray", Keyboard.KEY_NONE, ITEM_PREFIX), 25, "isPressed", "Ice Spray Wand");
-new ClickMacro("packet", "right", new KeyBind("Use Wither Sword", Keyboard.KEY_NONE, ITEM_PREFIX), 25, "isPressed", "Hyperion", "Valkyrie", "Scylla", "Astraea");
-new ClickMacro("packet", "right", new KeyBind("Use Fishing Rod", Keyboard.KEY_NONE, ITEM_PREFIX), 25, "isPressed", "rod of the sea", "auger rod");
-new ClickMacro("packet", "left", new KeyBind("Use Gyro Wand", Keyboard.KEY_NONE, ITEM_PREFIX), 25, "isPressed", "gyrokinetic wand");
-new ClickMacro("packet", "left", new KeyBind("Use Gloomlock Grimoire", Keyboard.KEY_NONE, ITEM_PREFIX), 25, "isPressed", "gloomlock grimoire");
+new ClickMacro(
+    "packet",
+    "right",
+    new KeyBind("Teleport Macro", Keyboard.KEY_NONE, ITEM_PREFIX),
+    25,
+    "isKeyDown",
+    "Aspect of the End",
+    "Aspect of the Void"
+);
+new ClickMacro(
+    "packet",
+    "right",
+    new KeyBind("Use Wither Cloak", Keyboard.KEY_NONE, ITEM_PREFIX),
+    25,
+    "isPressed",
+    "Wither Cloak Sword"
+);
+new ClickMacro(
+    "packet",
+    "right",
+    new KeyBind("Use Ice Spray", Keyboard.KEY_NONE, ITEM_PREFIX),
+    25,
+    "isPressed",
+    "Ice Spray Wand"
+);
+new ClickMacro(
+    "packet",
+    "right",
+    new KeyBind("Use Wither Sword", Keyboard.KEY_NONE, ITEM_PREFIX),
+    25,
+    "isPressed",
+    "Hyperion",
+    "Valkyrie",
+    "Scylla",
+    "Astraea"
+);
+new ClickMacro(
+    "packet",
+    "right",
+    new KeyBind("Use Fishing Rod", Keyboard.KEY_NONE, ITEM_PREFIX),
+    25,
+    "isPressed",
+    "rod of the sea",
+    "auger rod"
+);
+new ClickMacro(
+    "packet",
+    "left",
+    new KeyBind("Use Gyro Wand", Keyboard.KEY_NONE, ITEM_PREFIX),
+    25,
+    "isPressed",
+    "gyrokinetic wand"
+);
+new ClickMacro(
+    "packet",
+    "left",
+    new KeyBind("Use Gloomlock Grimoire", Keyboard.KEY_NONE, ITEM_PREFIX),
+    25,
+    "isPressed",
+    "gloomlock grimoire"
+);
 
-register("chat", function(event) {
+register("chat", function (event) {
     let unformattedMessage = ChatLib.getChatMessage(event);
-    msgString = unformattedMessage.toString();
-    if(msgString.startsWith("§cAutopet §eequipped your §7[Lvl " + macros.level + "] §6Ocelot§e!")){
+    let msgString = unformattedMessage.toString();
+    if (msgString.startsWith("§cAutopet §eequipped your §7[Lvl " + macros.level + "] §6Ocelot§e!")) {
         if (macros.moduleMode == 0) {
             LegitRod();
         } else if (macros.moduleMode == 0) {
-            PacketRod():
+            PacketRod();
         }
     }
-})
+});
 
-register("tick", (ticks) => {
+register("tick", ticks => {
     if (dungeons.autoS1Leap) {
         s1LeapTick();
     }
@@ -201,14 +255,32 @@ register("tick", (ticks) => {
     }
     if (macros.termSwap === 0) {
         if (termToggle.isPressed()) {
-            ChatLib.chat(`${(termSwap = !termSwap) ? PREFIX + '&rTerminator Swap &aEnabled' : PREFIX + '&rTerminator Swap &cDisabled'}`);
+            ChatLib.chat(
+                `${
+                    (termSwap = !termSwap)
+                        ? PREFIX + "&rTerminator Swap &aEnabled"
+                        : PREFIX + "&rTerminator Swap &cDisabled"
+                }`
+            );
         }
     }
     if (soulWhipSwap.isPressed()) {
-        ChatLib.chat(`${(isGrindingGhosts = !isGrindingGhosts) ? PREFIX + '&rGhost SwordSwap &aEnabled' : PREFIX + '&rGhost SwordSwap &cDisabled'}`);
+        ChatLib.chat(
+            `${
+                (isGrindingGhosts = !isGrindingGhosts)
+                    ? PREFIX + "&rGhost SwordSwap &aEnabled"
+                    : PREFIX + "&rGhost SwordSwap &cDisabled"
+            }`
+        );
     }
     if (leftClickWhip.isPressed()) {
-        ChatLib.chat(`${(lcWhipToggle = !lcWhipToggle) ? PREFIX + '&rSoul Whip Swap &aEnabled' : PREFIX + '&rSoul Whip Swap &cDisabled'}`);
+        ChatLib.chat(
+            `${
+                (lcWhipToggle = !lcWhipToggle)
+                    ? PREFIX + "&rSoul Whip Swap &aEnabled"
+                    : PREFIX + "&rSoul Whip Swap &cDisabled"
+            }`
+        );
     }
     if (dungeons.autoSS && dungeons.autoSSType === 0) {
         autoSimonSays();
@@ -216,20 +288,35 @@ register("tick", (ticks) => {
     if (macros.axeSwap === 0 || macros.axeSwap === 2) {
         if (useAxe.isPressed()) {
             lastSwap = new Date().getTime();
-            ChatLib.chat(`${(axeSwap = !axeSwap) ? PREFIX + '&rAxe Swap &aEnabled' : PREFIX + '&rAxe Swap &cDisabled'}`);
+            ChatLib.chat(
+                `${(axeSwap = !axeSwap) ? PREFIX + "&rAxe Swap &aEnabled" : PREFIX + "&rAxe Swap &cDisabled"}`
+            );
         }
     }
     if (autoRogue.isPressed()) {
-        ChatLib.chat(`${(autoSpeed = !autoSpeed) ? PREFIX + '&rAuto Rogue &aEnabled' : PREFIX + '&rAuto Rogue &cDisabled'}`);
+        ChatLib.chat(
+            `${(autoSpeed = !autoSpeed) ? PREFIX + "&rAuto Rogue &aEnabled" : PREFIX + "&rAuto Rogue &cDisabled"}`
+        );
 
         // To Trigger when Clicked instead of 30s After
         if (autoSpeed) {
             if (!inDungeon) return;
             for (let i = 0; i < 9; i++) {
-                if (Player.getInventory().getStackInSlot(i).getName().removeFormatting().toLowerCase().includes("rogue")) {
+                if (
+                    Player.getInventory().getStackInSlot(i).getName().removeFormatting().toLowerCase().includes("rogue")
+                ) {
                     Client.sendPacket(new C09PacketHeldItemChange(i));
                     for (let j = 0; j < dungeons.autoRogueClicks; j++) {
-                        Client.sendPacket(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), 255, Player.getInventory().getStackInSlot(i).getItemStack(), 0, 0, 0));
+                        Client.sendPacket(
+                            new C08PacketPlayerBlockPlacement(
+                                new BlockPos(-1, -1, -1),
+                                255,
+                                Player.getInventory().getStackInSlot(i).getItemStack(),
+                                0,
+                                0,
+                                0
+                            )
+                        );
                         // ChatLib.chat("Clicked Rogue Sword");
                     }
                     Client.sendPacket(new C09PacketHeldItemChange(Player.getInventory().getInventory().field_70461_c));
@@ -239,23 +326,47 @@ register("tick", (ticks) => {
         }
     }
     if (doubleSwap.isPressed()) {
-        ChatLib.chat(`${(doubleSwapToggle = !doubleSwapToggle) ? PREFIX + '&rDouble Swap &aEnabled' : PREFIX + '&rDouble Swap &cDisabled'}`);
+        ChatLib.chat(
+            `${
+                (doubleSwapToggle = !doubleSwapToggle)
+                    ? PREFIX + "&rDouble Swap &aEnabled"
+                    : PREFIX + "&rDouble Swap &cDisabled"
+            }`
+        );
     }
     if (tripleSwap.isPressed()) {
-        ChatLib.chat(`${(tripleSwapToggle = !tripleSwapToggle) ? PREFIX + '&rTriple Swap &aEnabled' : PREFIX + '&rTriple Swap &cDisabled'}`);
+        ChatLib.chat(
+            `${
+                (tripleSwapToggle = !tripleSwapToggle)
+                    ? PREFIX + "&rTriple Swap &aEnabled"
+                    : PREFIX + "&rTriple Swap &cDisabled"
+            }`
+        );
     }
     if (autoClicker.isPressed()) {
-        ChatLib.chat(`${(toggled = !toggled) ? PREFIX + '&rTerminator AC &aEnabled' : PREFIX + '&rTerminator AC &cDisabled'}`);
+        ChatLib.chat(
+            `${(toggled = !toggled) ? PREFIX + "&rTerminator AC &aEnabled" : PREFIX + "&rTerminator AC &cDisabled"}`
+        );
     }
     autoRogueSword(autoSpeed);
     termSwapper(termSwap);
-    autoWardrobeTick(firstSlot, secondSlot, thirdSlot, fourthSlot, fifthSlot, sixthSlot, seventhSlot, eighthSlot, ninethSlot);
+    autoWardrobeTick(
+        firstSlot,
+        secondSlot,
+        thirdSlot,
+        fourthSlot,
+        fifthSlot,
+        sixthSlot,
+        seventhSlot,
+        eighthSlot,
+        ninethSlot
+    );
     autoStorageTick(storageSlot1, storageSlot2, storageSlot3, storageSlot4);
     aotsSwap(useAxe, axeSwap);
     if (config.ghostArm && config.ghostArmToggle) {
         zombieGhostArm();
     }
-})
+});
 
 register("postGuiRender", () => {
     inCombatTradeGUI();
@@ -274,7 +385,7 @@ register("postGuiRender", () => {
     if (dungeons.autospiritToggle) {
         autoSpirit();
     }
-})
+});
 register("playerInteract", (action, pos, event) => {
     if (dungeons.stonkGB) {
         stonkGhostBlockPlayerInteract(action, pos, event);
@@ -338,7 +449,7 @@ register("step", () => {
         if (line.includes("mist")) {
             inMist = true;
         }
-    })
+    });
     if (dungeons.secretAuraToggle) {
         sercretAura();
     }
@@ -351,8 +462,8 @@ register("step", () => {
 }).setFps(2);
 
 register("step", () => {
-    rpc()
-}).setFps(1)
+    rpc();
+}).setFps(1);
 
 // register("worldLoad", () => {
 //     if (SpotifyController.firstInitAttempt === false) {
@@ -361,8 +472,8 @@ register("step", () => {
 // })
 
 register("worldUnload", () => {
-    rpc()
-})
+    rpc();
+});
 
 register("renderEntity", (entity, pos, pticks, event) => {
     revealHiddenMobs(entity);
@@ -392,7 +503,7 @@ register("clicked", (x, y, button, state) => {
     if (tripleSwapToggle) {
         tripleSwapClick(button);
     }
-})
+});
 
 register("step", () => {
     if (esp.enabled) {
@@ -404,24 +515,24 @@ register("renderWorld", () => {
     if (esp.enabled) {
         drawBoxOnEntity();
     }
-})
+});
 
 register("scrolled", (x, y, direction) => {
     spotifyGuiScroll(direction);
-})
+});
 
 let zzz = false;
 
 register("guiMouseClick", (x, y, button, gui, event) => {
-  //  ChatLib.chat("clicked")
+    //  ChatLib.chat("clicked")
     if (isMouseOver(config.spotifyX, config.spotifyY, config.spotifyWidth, config.spotifyHeight)) {
         zzz = true;
-      //  ChatLib.chat("true");
+        //  ChatLib.chat("true");
     } else {
         zzz = false;
     }
-  //  ChatLib.chat(gui);
-})
+    //  ChatLib.chat(gui);
+});
 register("dragged", (dX, dY, x, y) => {
     if (zzz) {
         if (config.moveSongGui.isOpen()) {
@@ -429,13 +540,13 @@ register("dragged", (dX, dY, x, y) => {
             config.spotifyY = y;
         }
     }
-})
+});
 
 register("renderOverlay", () => {
     spotifyRenderOverlay(config.moveSongGui.isOpen());
-})
+});
 
-register("guiClosed", (gui) => {
+register("guiClosed", gui => {
     if (config.moveSongGui.isOpen()) {
         ChatLib.command("nergeneral", true);
     }
@@ -443,53 +554,46 @@ register("guiClosed", (gui) => {
     // if (gui === "gg.essential.vigilance.gui.SettingsGui@50c776dc") { // gg.essential.vigilance.gui.SettingsGui@577cd5d
     //     ChatLib.command("ner");
     // }
-})
+});
 
-let calcMsg = new Message(new TextComponent("&r                     &r&fSecrets Found: &r&bCalculating..&r"))
-let lastExtraStatsClick = [false, 0]
-register("chat", (event) => {
-    let reallyPureMsg = ChatLib.getChatMessage(event, true)
-    let pureMsg = ChatLib.getChatMessage(event, true).replace(/ /gi, "")
+let calcMsg = new Message(new TextComponent("&r                     &r&fSecrets Found: &r&bCalculating..&r"));
+let lastExtraStatsClick = [false, 0];
+register("chat", event => {
+    let reallyPureMsg = ChatLib.getChatMessage(event, true);
+    let pureMsg = ChatLib.getChatMessage(event, true).replace(/ /gi, "");
     // console.log(reallyPureMsg.length + ": " + reallyPureMsg)
     if (pureMsg.startsWith("&r&r&6>&e&lEXTRASTATS&6<")) {
         lastExtraStatsClick = [true, new Date().getTime()];
         ChatLib.say("/showextrastats");
-        calcMsg.chat()
+        calcMsg.chat();
         // console.log(1)
     }
-    if (new Date().getTime() - lastExtraStatsClick[1] > 2000) { return; }
+    if (new Date().getTime() - lastExtraStatsClick[1] > 2000) {
+        return;
+    }
     if (pureMsg === "&r&a&l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬&r") {
         if (lastExtraStatsClick[0]) {
-            lastExtraStatsClick[0] = false
-        }
-        else {
-            cancel(event)
+            lastExtraStatsClick[0] = false;
+        } else {
+            cancel(event);
         }
     }
     if (pureMsg.startsWith("&r&r&cTheCatacombs&r&8-")) {
-        cancel(event)
+        cancel(event);
+    } else if (pureMsg.startsWith("&r&r&fTotalDamageas")) {
+        cancel(event);
+    } else if (pureMsg.startsWith("&r&r&fTeamScore:")) {
+        cancel(event);
+    } else if (pureMsg.startsWith("&r&r&fEnemiesKilled:")) {
+        cancel(event);
+    } else if (pureMsg.startsWith("&r&r&fDeaths:&r&c")) {
+        cancel(event);
+    } else if (pureMsg.startsWith("&r&r&c☠&r&eDefeated&r&c")) {
+        cancel(event);
+    } else if (pureMsg.startsWith("&r&r&fAllyHealing:&r&a")) {
+        cancel(event);
+    } else if (pureMsg.startsWith("&r&r&fSecretsFound:")) {
+        cancel(event);
+        ChatLib.editChat(calcMsg, new Message(new TextComponent(reallyPureMsg)));
     }
-    else if (pureMsg.startsWith("&r&r&fTotalDamageas")) {
-        cancel(event)
-    }
-    else if (pureMsg.startsWith("&r&r&fTeamScore:")) {
-        cancel(event)
-    }
-    else if (pureMsg.startsWith("&r&r&fEnemiesKilled:")) {
-        cancel(event)
-    }
-    else if (pureMsg.startsWith("&r&r&fDeaths:&r&c")) {
-        cancel(event)
-    }
-    else if (pureMsg.startsWith("&r&r&c☠&r&eDefeated&r&c")) {
-        cancel(event)
-    }
-    else if (pureMsg.startsWith("&r&r&fAllyHealing:&r&a")) {
-        cancel(event)
-    }
-    else if (pureMsg.startsWith("&r&r&fSecretsFound:")) {
-        cancel(event)
-        ChatLib.editChat(calcMsg, new Message(new TextComponent(reallyPureMsg)))
-    }
-
-}).setChatCriteria("${*}")
+}).setChatCriteria("${*}");
