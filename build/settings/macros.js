@@ -365,7 +365,7 @@ class Macros {
         category: "Foraging",
         subcategory: ""
     })
-    toggled = true;
+    toggled = false;
     @TextProperty({
         name: "Ocelot Level",
         description: "Enter the level of your ocelot here.",
