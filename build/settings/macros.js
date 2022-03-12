@@ -365,14 +365,14 @@ class Macros {
         category: "Foraging",
         subcategory: ""
     })
-    Toggled = "";
+    toggled = "";
     @TextProperty({
         name: "Ocelot Level",
         description: "Enter the level of your ocelot here.",
         category: "Foraging",
         placeholder: "100"
     })
-    Level = "";
+    level = "";
     @TextProperty({
         name: "Minimum Rod Delay",
         description: "",
