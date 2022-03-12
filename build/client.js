@@ -130,7 +130,7 @@ new ClickMacro("packet", "left", new KeyBind("Use Gyro Wand", Keyboard.KEY_NONE,
 new ClickMacro("packet", "left", new KeyBind("Use Gloomlock Grimoire", Keyboard.KEY_NONE, ITEM_PREFIX), 25, "isPressed", "gloomlock grimoire");
 
 register("chat", function(event) {
-    var unformattedMessage = ChatLib.getChatMessage(event);
+    let unformattedMessage = ChatLib.getChatMessage(event);
     msgString = unformattedMessage.toString();
     if(msgString.startsWith("§cAutopet §eequipped your §7[Lvl " + macros.Level + "] §6Ocelot§e!")){
         if (macros.moduleMode == 0) {
