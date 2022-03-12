@@ -358,7 +358,44 @@ class Macros {
         max: 500
     })
     tripleSwapDelay = 100;
-
+    
+     @SwitchProperty({
+        name: "Enable",
+        description: "Enable or disable this module",
+        category: "Foraging",
+        subcategory: ""
+    })
+    toggled = false;
+    @TextProperty({
+        name: "Ocelot Level",
+        description: "Enter the level of your ocelot here.",
+        category: "Foraging",
+        placeholder: "100"
+    })
+    level = "";
+    @SliderProperty({
+        name: "Foraging Minimum Rod Delay",
+        category: "Foraging",
+        subcategory: "",
+        min: 0,
+        max: 750
+    })
+    min = 500;
+    @SliderProperty({
+        name: "Foraging Maximum Rod Delay",
+        category: "Foraging",
+        subcategory: "",
+        min: 0,
+        max: 750
+    })
+    max = 500;
+    @SelectorProperty({
+        name: "Foraging Module Mode",
+        description: "Mode that the foraging module will use",
+        category: "Foraging",
+        options: ["Legit", "Packet"]
+    })
+    moduleMode = 0;
 
     constructor() {
         this.initialize(this);
