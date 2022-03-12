@@ -189,7 +189,7 @@ register("chat", function (event) {
     if (msgString.startsWith("§cAutopet §eequipped your §7[Lvl " + macros.level + "] §6Ocelot§e!")) {
         if (macros.moduleMode == 0) {
             LegitRod();
-        } else if (macros.moduleMode == 0) {
+        } else if (macros.moduleMode == 1) {
             PacketRod();
         }
     }
