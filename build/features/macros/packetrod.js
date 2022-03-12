@@ -19,9 +19,9 @@ const PacketRod = () => {
                             Rod = index;
                         }
                     })
-                    var min=macros.min;
-                    var max=macros.max;
-                    var random = Math.floor(Math.random() * (+max - +min)) + +min;
+                    let min=macros.min;
+                    let max=macros.max;
+                    let random = Math.floor(Math.random() * (+max - +min)) + +min;
                     Thread.sleep(random)
                     Client.sendPacket(new C09PacketHeldItemChange(Rod));
                     Client.sendPacket(new C08PacketPlayerBlockPlacement(new BP(-1, -1, -1), 255, Player.getHeldItem().getItemStack(), 0, 0, 0)) 
