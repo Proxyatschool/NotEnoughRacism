@@ -133,15 +133,11 @@ register("chat", function(event) {
     var unformattedMessage = ChatLib.getChatMessage(event);
     msgString = unformattedMessage.toString();
     if(msgString.startsWith("§cAutopet §eequipped your §7[Lvl " + macros.Level + "] §6Ocelot§e!")){
-        LegitRod();
-    }
-})
-
-register("chat", function(event) {
-    var unformattedMessage = ChatLib.getChatMessage(event);
-    msgString = unformattedMessage.toString();
-    if(msgString.startsWith("§cAutopet §eequipped your §7[Lvl " + macros.Level + "] §6Ocelot§e!")){
-        PacketRod();
+        if (macros.moduleMode == 0) {
+            LegitRod();
+        } else if (macros.moduleMode == 0) {
+            PacketRod():
+        }
     }
 })
 
