@@ -19,9 +19,9 @@ const LegitRod = () => {
                             Rod = index;
                         }
                     })
-                    var min=macros.min;
-                    var max=macros.max;
-                    var random = Math.floor(Math.random() * (+max - +min)) + +min;
+                    let min=macros.min;
+                    let max=macros.max;
+                    let random = Math.floor(Math.random() * (+max - +min)) + +min;
                     Thread.sleep(random)
                     Player.setHeldItemIndex(Rod)
                     Thread.sleep(300)
