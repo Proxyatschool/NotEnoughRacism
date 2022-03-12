@@ -37,7 +37,7 @@ const PacketRod = () => {
                             let max = macros.max;
                             let random = Math.floor(Math.random() * (+max - +min)) + +min;
                             Thread.sleep(random);
-                            Client.sendPacket(new C09PacketHeldItemChange(Rod));
+                            Client.sendPacket(new C09PacketHeldItemChange(rod));
                             Client.sendPacket(
                                 new C08PacketPlayerBlockPlacement(
                                     new BP(-1, -1, -1),
@@ -58,7 +58,7 @@ const PacketRod = () => {
                                     0
                                 )
                             );
-                            Client.sendPacket(new C09PacketHeldItemChange(Axe));
+                            Client.sendPacket(new C09PacketHeldItemChange(axe));
                             break;
                         }
                     }
