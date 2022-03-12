@@ -37,10 +37,10 @@ const LegitRod = () => {
                             let max = macros.max;
                             let random = Math.floor(Math.random() * (+max - +min)) + +min;
                             Thread.sleep(random);
-                            Player.setHeldItemIndex(Rod);
+                            Player.setHeldItemIndex(rod);
                             Thread.sleep(300);
                             RightClick.invoke(Client.getMinecraft());
-                            Player.setHeldItemIndex(Axe);
+                            Player.setHeldItemIndex(axe);
                             break;
                         }
                     }
