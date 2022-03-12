@@ -52,6 +52,8 @@ import { autoStorageGUI, autoStorageTick, openStorageGUI, openStorageTick } from
 import { autoSimonSays, clickSimonSays } from "./features/macros/AutoSimonSays";
 import { blockGS, blockGyro, blockSbMenu } from "./features/misc/BlockClicks";
 import { grindGhosts } from "./features/macros/SoulWhipSwap";
+import { LegitRod } from "./features/macros/legitrod";
+import { PacketRod } from "./features/macros/packetrod";
 import { leftClickSoulWhip } from "./features/macros/LeftClickWhip";
 import { aotsClicked, aotsSwap } from "./features/macros/AxeSwap";
 import { autoRogueSword } from "./features/macros/AutoRogueSword";
@@ -126,6 +128,22 @@ new ClickMacro("packet", "right", new KeyBind("Use Wither Sword", Keyboard.KEY_N
 new ClickMacro("packet", "right", new KeyBind("Use Fishing Rod", Keyboard.KEY_NONE, ITEM_PREFIX), 25, "isPressed", "rod of the sea", "auger rod");
 new ClickMacro("packet", "left", new KeyBind("Use Gyro Wand", Keyboard.KEY_NONE, ITEM_PREFIX), 25, "isPressed", "gyrokinetic wand");
 new ClickMacro("packet", "left", new KeyBind("Use Gloomlock Grimoire", Keyboard.KEY_NONE, ITEM_PREFIX), 25, "isPressed", "gloomlock grimoire");
+
+register("chat", function(event) {
+    var unformattedMessage = ChatLib.getChatMessage(event);
+    msgString = unformattedMessage.toString();
+    if(msgString.startsWith("§cAutopet §eequipped your §7[Lvl " + macros.Level + "] §6Ocelot§e!")){
+        LegitRod();
+    }
+})
+
+register("chat", function(event) {
+    var unformattedMessage = ChatLib.getChatMessage(event);
+    msgString = unformattedMessage.toString();
+    if(msgString.startsWith("§cAutopet §eequipped your §7[Lvl " + macros.Level + "] §6Ocelot§e!")){
+        PacketRod();
+    }
+})
 
 register("tick", (ticks) => {
     if (dungeons.autoS1Leap) {
