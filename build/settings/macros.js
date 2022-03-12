@@ -373,23 +373,25 @@ class Macros {
         placeholder: "100"
     })
     level = "";
-    @TextProperty({
-        name: "Minimum Rod Delay",
-        description: "",
+    @SliderProperty({
+        name: "Foraging Minimum Rod Delay",
         category: "Foraging",
-        placeholder: "300"
+        subcategory: "",
+        min: 0,
+        max: 750
     })
-    min = "";
-    @TextProperty({
-        name: "Maximum Rod Delay",
-        description: "",
+    min = 500;
+    @SliderProperty({
+        name: "Foraging Maximum Rod Delay",
         category: "Foraging",
-        placeholder: "500"
+        subcategory: "",
+        min: 0,
+        max: 750
     })
-    max = "";
+    max = 500;
     @SelectorProperty({
-        name: "Module Mode",
-        description: "Mode that the module will use",
+        name: "Foraging Module Mode",
+        description: "Mode that the foraging module will use",
         category: "Foraging",
         options: ["Legit", "Packet"]
     })
