@@ -108,6 +108,9 @@ Latest Version: 3.0.2 | Last Updated: Jan 27th 2022
        - Left Click
        - Toggle
      - Terminator Right Click Autoclicker
+     - Foraging Rod Macro
+        - Packet
+        - Legit
      - Terminator Swap
        - Toggle
        - Hold
