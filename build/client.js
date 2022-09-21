@@ -168,25 +168,25 @@ new ClickMacro(
 );
 new ClickMacro(
     "packet",
-    "left",
-    new KeyBind("Use Gyro Wand", Keyboard.KEY_NONE, ITEM_PREFIX),
+    "right",
+    new KeyBind("Use Juju shortbow", Keyboard.KEY_NONE, ITEM_PREFIX),
     25,
     "isPressed",
-    "gyrokinetic wand"
+    "juju shortbow"
 );
 new ClickMacro(
     "packet",
-    "left",
-    new KeyBind("Use Gloomlock Grimoire", Keyboard.KEY_NONE, ITEM_PREFIX),
+    "right",
+    new KeyBind(fuck you", Keyboard.KEY_NONE, ITEM_PREFIX),
     25,
     "isPressed",
-    "gloomlock grimoire"
+    "aspect of the jerry"
 );
 
 register("chat", function (event) {
     let unformattedMessage = ChatLib.getChatMessage(event);
     let msgString = unformattedMessage.toString();
-    if (msgString.startsWith("§cAutopet §eequipped your §7[Lvl " + macros.level + "] §6Ocelot§e!")) {
+    if (msgString.startsWith("§cAutodie §eequipped your §7[Lvl " + macros.level + "] §6Ocelot§e!")) {
         if (macros.moduleMode == 0) {
             LegitRod();
         } else if (macros.moduleMode == 1) {
